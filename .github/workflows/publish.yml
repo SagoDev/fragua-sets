@@ -4,9 +4,6 @@ on:
   release:
     types: [published]
 
-permissions:
-  contents: read
-
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -28,6 +25,16 @@ jobs:
       - name: Build the package
         run: python -m build
 
-      - name: Publish to PyPI
+      - name: Configure PyPI credentials
         run: |
-          twine upload -u __token__ -p ${{ secrets.PYPI_API_TOKEN }} dist/*
+          # Create a temporary .pypirc file with token
+          echo "[distutils]" > ~/.pypirc
+          echo "index-servers = pypi" >> ~/.pypirc
+          echo "[pypi]" >> ~/.pypirc
+          echo "username = __token__" >> ~/.pypirc
+          echo "password = ${{ secrets.PYPI_API_TOKEN }}" >> ~/.pypirc
+          chmod 600 ~/.pypirc
+
+      - name: Upload package to PyPI
+        run: |
+          twine upload --non-interactive --verbose dist/*
