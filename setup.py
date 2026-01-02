@@ -19,5 +19,9 @@ setup(
     url="https://github.com/SagoDev/fragua-sets",
     install_requires=[
         "fragua",
+        "requests",
+        "pandas",
+        "numpy",
+        "sqlalchemy",
     ],
 )
