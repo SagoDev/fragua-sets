@@ -28,8 +28,9 @@ jobs:
       - name: Check Python formatting (Black)
         run: black --check .
 
-      - name: Check Markdown formatting
-        run: mdformat --check . --exclude README.md
+      - name: Check Markdown formatting (excluding README)
+        run: |
+          mdformat --check $(find . -name "*.md" ! -name "README.md")
 
 
   # ----------------------------
