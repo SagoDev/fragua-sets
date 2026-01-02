@@ -1,8 +1,14 @@
 # Fragua Sets
 
-**Fragua Sets** is a Python script that provides **pre-configured FraguaSets** for use within a **Fragua environment**, enabling rapid development of ETL processes.  
+**Fragua Sets** is a Python script that provides **pre-configured FraguaSets**
+for use within a **Fragua environment**, enabling rapid development of ETL
+processes.
 
-Fragua is a Python library designed to orchestrate **ETL workflows** through a configurable environment, leveraging **FraguaAgents** that execute **pipeline functions** and **internal functions** to process data efficiently. This script offers ready-to-use FraguaSets so you can start working in a Fragua environment without manual setup.
+Fragua is a Python library designed to orchestrate **ETL workflows** through a
+configurable environment, leveraging **FraguaAgents** that execute **pipeline
+functions** and **internal functions** to process data efficiently. This script
+offers ready-to-use FraguaSets so you can start working in a Fragua environment
+without manual setup.
 
 ## Features
 
@@ -19,16 +25,18 @@ Install via PyPI:
 ```bash
 pip install fragua-sets
 ```
+
 ## Fragua Library
 
 ```bash
-python pip install fragua
+pip install fragua
 ```
 
-> ⚠️ Fragua is published for educational and experimental purposes.
+> ⚠️ Fragua is published for educational and experimental purposes.  
 > It is **not recommended for production use yet**.
 
-For more info visit: [text](https://pypi.org/project/fragua/)
+For more information, visit:
+https://pypi.org/project/fragua/
 
 ---
 
@@ -36,9 +44,9 @@ For more info visit: [text](https://pypi.org/project/fragua/)
 
 **Santiago Lanz**
 
-- 🌐 https://sagodev.github.io/My-Portfolio-Web/
-- 💼 https://www.linkedin.com/in/santiagolanz/
-- 🐙 https://github.com/SagoDev
+- https://sagodev.github.io/My-Portfolio-Web/
+- https://www.linkedin.com/in/santiagolanz/
+- https://github.com/SagoDev
 
 ---
 
