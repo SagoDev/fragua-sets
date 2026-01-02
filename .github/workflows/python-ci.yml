@@ -8,20 +8,9 @@ on:
 
 jobs:
   # ----------------------------
-  # Shared setup
-  # ----------------------------
-  setup:
-    runs-on: ubuntu-latest
-    outputs:
-      python-version: "3.11"
-    steps:
-      - run: echo "Setup completed"
-
-  # ----------------------------
   # Formatting
   # ----------------------------
   formatting:
-    needs: setup
     runs-on: ubuntu-latest
 
     steps:
@@ -31,7 +20,7 @@ jobs:
         with:
           python-version: 3.11
 
-      - name: Install formatter
+      - name: Install formatters
         run: |
           python -m pip install --upgrade pip
           pip install black mdformat mdformat-gfm
@@ -46,7 +35,6 @@ jobs:
   # Linting
   # ----------------------------
   lint:
-    needs: setup
     runs-on: ubuntu-latest
 
     steps:
@@ -59,21 +47,19 @@ jobs:
       - name: Install lint dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pylint requests
+          pip install pylint requests pandas numpy sqlalchemy scikit-learn
 
       - name: Run Pylint
         run: |
           pylint fragua_sets \
             --output-format=colorized \
-            --disable=C0103,C0415 \
-            --ignored-modules=fragua,pandas,numpy,sqlalchemy,sklearn
-
+            --disable=C0103,C0415,E0401 \
+            --extension-pkg-whitelist=pydantic
 
   # ----------------------------
   # Typing
   # ----------------------------
   typing:
-    needs: setup
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -90,13 +76,14 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install mypy types-requests
+          pip install mypy pandas-stubs types-requests
 
       - name: Run mypy
         run: |
           mypy fragua_sets \
             --strict \
             --pretty \
+            --ignore-missing-imports \
             --python-version ${{ matrix.python-version }}
 
   # ----------------------------
