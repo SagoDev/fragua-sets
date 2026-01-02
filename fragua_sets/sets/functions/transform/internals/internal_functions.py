@@ -103,24 +103,13 @@ def encode_categoricals(
     Encode categorical columns into dummy variables.
 
     All object-type columns are converted using one-hot encoding.
-
-    Args:
-        data (pd.DataFrame):
-            Input DataFrame to process.
-        config (Optional[Dict[str, Any]]):
-            Optional configuration dictionary.
-            Currently unused but reserved for future options.
-
-    Returns:
-        pd.DataFrame:
-            DataFrame with encoded categorical features.
     """
     df = data.copy()
 
-    cat_cols = df.select_dtypes(include="object").columns
-    if len(cat_cols) > 0:
+    cat_cols = list(df.select_dtypes(include="object").columns)
+    if cat_cols:
         df = pd.get_dummies(df, columns=cat_cols)
-        logger.info("Transform: Encoded categoricals: %s", list(cat_cols))
+        logger.info("Transform: Encoded categoricals: %s", cat_cols)
 
     return df
 
