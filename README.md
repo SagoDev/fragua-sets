@@ -22,7 +22,7 @@ pip install fragua-sets
 ## Fragua Library
 
 ```bash
-python pip install fragua.
+python pip install fragua
 ```
 
 > ⚠️ Fragua is published for educational and experimental purposes.
