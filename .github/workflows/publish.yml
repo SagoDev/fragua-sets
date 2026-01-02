@@ -32,7 +32,7 @@ jobs:
           echo "index-servers = pypi" >> ~/.pypirc
           echo "[pypi]" >> ~/.pypirc
           echo "username = __token__" >> ~/.pypirc
-          echo "password = ${{ secrets.PYPI_API_TOKEN }}" >> ~/.pypirc
+          echo -n "password = ${{ secrets.PYPI_API_TOKEN }}" >> ~/.pypirc
           chmod 600 ~/.pypirc
 
       - name: Upload package to PyPI
