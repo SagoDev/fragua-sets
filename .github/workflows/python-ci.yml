@@ -59,13 +59,15 @@ jobs:
       - name: Install lint dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pylint
+          pip install pylint requests
 
       - name: Run Pylint
         run: |
           pylint fragua_sets \
             --output-format=colorized \
-            --disable=C0103,C0415
+            --disable=C0103,C0415 \
+            --ignored-modules=fragua,pandas,numpy,sqlalchemy,sklearn
+
 
   # ----------------------------
   # Typing
