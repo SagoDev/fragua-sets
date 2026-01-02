@@ -7,8 +7,8 @@ import pandas as pd
 from fragua.core.set import FraguaSet
 from fragua.sets.load.internal_functions import INTERNAL_FUNCTIONS
 
-from fragua.utils.types.enums import ILF, ActionType, FieldType, TargetType
-
+from fragua.utils.types.enums import ActionType, FieldType, TargetType
+from sets.utils.enums import ILF
 
 # -----------------------
 # Pipeline Load Functions

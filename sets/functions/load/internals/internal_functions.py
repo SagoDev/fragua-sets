@@ -11,7 +11,9 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 from fragua.core.set import FraguaSet
-from fragua.utils.types.enums import ILF, FieldType
+from fragua.utils.types.enums import FieldType
+
+from sets.utils.enums import ILF
 
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-positional-arguments

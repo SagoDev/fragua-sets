@@ -8,7 +8,9 @@ from fragua.sets.transform.internal_functions import (
     INTERNAL_TRANSFORM_FUNCTIONS,
 )
 
-from fragua.utils.types.enums import ITF, ActionType, FieldType, TargetType
+from fragua.utils.types.enums import ActionType, FieldType, TargetType
+
+from sets.utils.enums import ITF
 
 
 # ----------------------------

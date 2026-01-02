@@ -11,7 +11,9 @@ from sklearn.preprocessing import MinMaxScaler
 
 from fragua.core.set import FraguaSet
 from fragua.utils.logger import get_logger
-from fragua.utils.types.enums import ITF, ITFConfigKeys
+from fragua.utils.types.enums import ITFConfigKeys
+
+from sets.utils.enums import ITF
 
 logger = get_logger(__name__)
 
