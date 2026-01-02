@@ -10,7 +10,7 @@ from fragua.sets.transform.internal_functions import (
 
 from fragua.utils.types.enums import ActionType, FieldType, TargetType
 
-from sets.utils.enums import ITF
+from fragua_sets.utils.enums import ITF
 
 
 # ----------------------------
