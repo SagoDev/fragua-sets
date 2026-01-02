@@ -1,6 +1,6 @@
 """Setup file."""
 
-from setuptools import setup, find_packages
+from setuptools import setup
 
 with open("README.md", encoding="utf-8") as f:
     long_description = f.read()
@@ -10,9 +10,8 @@ setup(
     version="1.0",
     author="SagoDev",
     description="Package of fragua sets with reutilizable functions for ETL process.",
-    packages=find_packages(where=".", include=["fragua_sets", "fragua_sets.*"]),
+    packages=["fragua_sets"],
     include_package_data=True,
-    package_data={"fragua-sets": ["py.typed"]},
     long_description=long_description,
     long_description_content_type="text/markdown",
     python_requires=">=3.10",
