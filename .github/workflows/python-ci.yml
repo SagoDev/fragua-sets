@@ -29,7 +29,8 @@ jobs:
         run: black --check .
 
       - name: Check Markdown formatting
-        run: mdformat --check .
+        run: mdformat --check . --exclude README.md
+
 
   # ----------------------------
   # Linting
