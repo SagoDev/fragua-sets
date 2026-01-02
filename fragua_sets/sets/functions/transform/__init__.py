@@ -2,6 +2,3 @@
 
 from .pipelines import *
 from .internals import *
-
-PTF = {}
-ITF = {}
