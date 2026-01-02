@@ -6,11 +6,11 @@ Fragua is a Python library designed to orchestrate **ETL workflows** through a c
 
 ## Features
 
-- Pre-configured **FraguaSets** ready for ETL workflows.
-- Supports **pipeline functions** to orchestrate complex ETL processes.
-- Includes **internal functions** for common data operations.
-- Designed for direct use with **FraguaAgents** within a Fragua environment.
-- Minimal setup required: plug and play in your Fragua environment.
+* Pre-configured **FraguaSets** ready for ETL workflows.
+* Supports **pipeline functions** to orchestrate complex ETL processes.
+* Includes **internal functions** for common data operations.
+* Designed for direct use with **FraguaAgents** within a Fragua environment.
+* Minimal setup required: plug and play in your Fragua environment.
 
 ## Installation
 
@@ -19,6 +19,7 @@ Install via PyPI:
 ```bash
 pip install fragua-sets
 ```
+
 ## Fragua Library
 
 ```bash
@@ -36,9 +37,9 @@ For more info visit: [text](https://pypi.org/project/fragua/)
 
 **Santiago Lanz**
 
-- 🌐 https://sagodev.github.io/My-Portfolio-Web/
-- 💼 https://www.linkedin.com/in/santiagolanz/
-- 🐙 https://github.com/SagoDev
+* 🌐 https://sagodev.github.io/My-Portfolio-Web/
+* 💼 https://www.linkedin.com/in/santiagolanz/
+* 🐙 https://github.com/SagoDev
 
 ---
 
