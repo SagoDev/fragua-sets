@@ -12,11 +12,11 @@ without manual setup.
 
 ## Features
 
-- Pre-configured **FraguaSets** ready for ETL workflows.
-- Supports **pipeline functions** to orchestrate complex ETL processes.
-- Includes **internal functions** for common data operations.
-- Designed for direct use with **FraguaAgents** within a Fragua environment.
-- Minimal setup required: plug and play in your Fragua environment.
+* Pre-configured **FraguaSets** ready for ETL workflows.
+* Supports **pipeline functions** to orchestrate complex ETL processes.
+* Includes **internal functions** for common data operations.
+* Designed for direct use with **FraguaAgents** within a Fragua environment.
+* Minimal setup required: plug and play in your Fragua environment.
 
 ## Installation
 
@@ -44,9 +44,9 @@ https://pypi.org/project/fragua/
 
 **Santiago Lanz**
 
-- https://sagodev.github.io/My-Portfolio-Web/
-- https://www.linkedin.com/in/santiagolanz/
-- https://github.com/SagoDev
+* https://sagodev.github.io/My-Portfolio-Web/
+* https://www.linkedin.com/in/santiagolanz/
+* https://github.com/SagoDev
 
 ---
 
