@@ -1,1 +1,0 @@
-"""Etelia extract functions module."""
