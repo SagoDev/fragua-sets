@@ -4,35 +4,15 @@ from enum import Enum
 
 
 # ----------------------------
-# TRANSFORM INTERNAL FUNCTIONS
+# EXTRACTION FUNCTIONS
 # ----------------------------
+class ExtractionFunction(str, Enum):
+    """Extraction function types."""
 
-
-class ITF(str, Enum):
-    """Internal Transform Functions."""
-
-    FILL_MISSING = "fill_missing"
-    STANDARDIZE = "standardize"
-    ENCODE_CATEGORICALS = "encode_categoricals"
-    SCALE_NUMERIC = "scale_numeric"
-    TREAT_OUTLIERS = "treat_outliers"
-    ADD_DERIVED_COLUMNS = "add_derived_columns"
-    FORMAT_NUMERIC = "format_numeric"
-    GROUP_AND_AGGREGATE = "group_and_aggregate"
-    SORT_DATAFRAME = "sort_dataframe"
-
-
-class ITFConfigKeys(str, Enum):
-    """Internal transform function config keys."""
-
-    NUMERIC_FILL = "numeric_fill"
-    CATEGORICAL_FILL = "categorical_fill"
-    OUTLIER_THRESHOLD = "outlier_threshold"
-    DERIVED_COLUMNS = "derived_columns"
-    ROUNDING_PRECISION = "rounding_precision"
-    GROUP_BY_COLS = "group_by_cols"
-    AGG_FUNCTIONS = "agg_functions"
-    SORT_BY = "sort_by"
+    EXTRACT_FROM_CSV = "extract_from_csv"
+    EXTRACT_FROM_EXCEL = "extract_from_excel"
+    EXTRACT_FROM_API = "extract_from_api"
+    EXTRACT_FROM_DB = "extract_from_database"
 
 
 # ----------------------------
