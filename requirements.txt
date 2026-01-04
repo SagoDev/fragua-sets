@@ -1,4 +1,4 @@
-fragua>=0.9.0
+fragua>=1.0
 requests>=2.31
 sqlalchemy>=2.0
 pandas>=2.0
