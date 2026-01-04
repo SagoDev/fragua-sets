@@ -51,9 +51,9 @@ def extract_from_csv(
 def extract_from_excel(
     path: str,
     *,
-    sheet_name: Optional[str] = None,
+    sheet_name: Union[str, int] = 0,
     **kwargs,
-) -> pd.DataFrame | dict[str, pd.DataFrame]:
+) -> pd.DataFrame:
     """
         Extract data from an Excel file into a pandas DataFrame.
 
@@ -181,7 +181,7 @@ def extract_from_database(
     return df
 
 
-EXTRACTION_FNS: List[Callable[..., Union[pd.DataFrame, Dict[str, pd.DataFrame]]]] = [
+EXTRACTION_FNS: List[Callable[..., pd.DataFrame]] = [
     extract_from_excel,
     extract_from_csv,
     extract_from_api,
