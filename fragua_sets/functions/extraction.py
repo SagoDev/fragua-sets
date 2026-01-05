@@ -7,6 +7,7 @@ from sqlalchemy.engine import Engine
 
 import pandas as pd
 
+# pylint: disable=too-many-arguments
 
 def extract_from_csv(
     path: str,

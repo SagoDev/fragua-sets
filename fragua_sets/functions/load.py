@@ -7,6 +7,8 @@ from sqlalchemy.engine import Engine
 
 import pandas as pd
 
+# pylint: disable=too-many-arguments
+
 
 def load_to_csv(
     df: pd.DataFrame,
