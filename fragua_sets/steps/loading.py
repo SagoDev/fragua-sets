@@ -5,7 +5,7 @@ from fragua_sets.core.step_builder import StepBuilder
 from fragua_sets.utils.enums.functions import LoadFunction
 from fragua_sets.utils.enums.sets import Sets
 
-SET_NAME = Sets.LOAD.value
+SET_NAME = Sets.LOADING.value
 LoadFunc = LoadFunction
 
 LOAD_TO_CSV = StepBuilder(
