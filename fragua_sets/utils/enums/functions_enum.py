@@ -1,4 +1,4 @@
-"""Enums classes type."""
+"""Functions Enum."""
 
 from enum import Enum
 
@@ -25,3 +25,14 @@ class LoadFunction(str, Enum):
     LOAD_TO_EXCEL = "load_to_excel"
     LOAD_TO_API = "load_to_api"
     LOAD_TO_DB = "load_to_database"
+
+
+# ----------------------------
+# UTILITY FUNCTIONS
+# ----------------------------
+class UtilityFunction(str, Enum):
+    """Extraction function types."""
+
+    PATH_EXISTS = "path_exists"
+    ENSURE_DIR_EXISTS = "ensure_dir_exists"
+    ENSURE_PARENT_DIR_EXISTS = "ensure_parent_dir_exists"
