@@ -180,7 +180,7 @@ def load_to_api(
     response.raise_for_status()
 
 
-LOAD_FUNCTIONS: List[Callable[..., None]] = [
+LOADING_FUNCTIONS: List[Callable[..., None]] = [
     load_to_api,
     load_to_csv,
     load_to_database,

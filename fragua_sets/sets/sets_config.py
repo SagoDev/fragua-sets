@@ -5,12 +5,12 @@ from typing import Any, Callable, Dict, Iterable, List
 from fragua import FraguaRegistry, FraguaSet
 
 from fragua_sets.functions.extraction import EXTRACTION_FUNCTIONS
-from fragua_sets.functions.load import LOAD_FUNCTIONS
+from fragua_sets.functions.loading import LOADING_FUNCTIONS
 from fragua_sets.functions.utility import UTILITY_FUNCTIONS
 
 FUNCTION_LISTS: Dict[str, Iterable[Callable[..., Any]]] = {
     "extraction": EXTRACTION_FUNCTIONS,
-    "load": LOAD_FUNCTIONS,
+    "loading": LOADING_FUNCTIONS,
     "utility": UTILITY_FUNCTIONS,
 }
 
