@@ -1,6 +1,6 @@
 """Enums Module."""
 
-from .functions_enum import ExtractionFunction, LoadFunction, UtilityFunction
-from .sets_enum import Sets
+from .functions import ExtractionFunction, LoadFunction, UtilityFunction
+from .sets import Sets
 
 __all__ = ["ExtractionFunction", "LoadFunction", "UtilityFunction", "Sets"]
