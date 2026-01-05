@@ -1,6 +1,6 @@
 """Load type functions."""
 
-from typing import Callable, Dict, List, Literal, Optional
+from typing import Any, Callable, Dict, List, Literal, Optional
 
 import requests
 from sqlalchemy.engine import Engine
@@ -17,7 +17,7 @@ def load_to_csv(
     sep: str = ",",
     encoding: Optional[str] = None,
     index: bool = False,
-    **kwargs,
+    **kwargs: Any,
 ) -> None:
     """
     Load a pandas DataFrame into a CSV file.
@@ -57,7 +57,7 @@ def load_to_excel(
     *,
     sheet_name: str = "Sheet1",
     index: bool = False,
-    **kwargs,
+    **kwargs: Any,
 ) -> None:
     """
     Load a pandas DataFrame into an Excel file.
@@ -94,7 +94,7 @@ def load_to_database(
     *,
     if_exists: Literal["fail", "replace", "append", "delete_rows"] = "append",
     index: bool = False,
-    **kwargs,
+    **kwargs: Any,
 ) -> None:
     """
     Load a pandas DataFrame into a relational database table.

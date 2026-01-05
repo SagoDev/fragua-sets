@@ -1,6 +1,6 @@
 """Extraction type functions."""
 
-from typing import Callable, Dict, List, Optional, Union, Any
+from typing import Callable, Dict, List, Optional, Union, Any, cast
 
 import requests
 from sqlalchemy.engine import Engine
@@ -9,12 +9,13 @@ import pandas as pd
 
 # pylint: disable=too-many-arguments
 
+
 def extract_from_csv(
     path: str,
     *,
     sep: str = ",",
     encoding: Optional[str] = None,
-    **kwargs,
+    **kwargs: Any,
 ) -> pd.DataFrame:
     """
     Extract data from a CSV file into a pandas DataFrame.
@@ -46,14 +47,14 @@ def extract_from_csv(
         **kwargs,
     )
 
-    return df
+    return cast(pd.DataFrame, df)
 
 
 def extract_from_excel(
     path: str,
     *,
     sheet_name: Union[str, int] = 0,
-    **kwargs,
+    **kwargs: Any,
 ) -> pd.DataFrame:
     """
         Extract data from an Excel file into a pandas DataFrame.
