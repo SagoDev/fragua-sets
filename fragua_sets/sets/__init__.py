@@ -1,6 +1,15 @@
 """Sets module."""
 
-from .functions import FUNCTIONS_SET
-from .pipelines import PIPELINES_SET
+from .sets_config import (
+    create_functions_set,
+    create_sets_list,
+    add_sets_to_registry,
+    SETS_LIST,
+)
 
-__all__ = ["FUNCTIONS_SET", "PIPELINES_SET"]
+__all__ = [
+    "create_sets_list",
+    "create_functions_set",
+    "add_sets_to_registry",
+    "SETS_LIST",
+]

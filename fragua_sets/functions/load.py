@@ -1,11 +1,13 @@
 """Load type functions."""
 
-from typing import Callable, Dict, List, Literal, Optional
+from typing import Any, Callable, Dict, List, Literal, Optional
 
 import requests
 from sqlalchemy.engine import Engine
 
 import pandas as pd
+
+# pylint: disable=too-many-arguments
 
 
 def load_to_csv(
@@ -15,7 +17,7 @@ def load_to_csv(
     sep: str = ",",
     encoding: Optional[str] = None,
     index: bool = False,
-    **kwargs,
+    **kwargs: Any,
 ) -> None:
     """
     Load a pandas DataFrame into a CSV file.
@@ -55,7 +57,7 @@ def load_to_excel(
     *,
     sheet_name: str = "Sheet1",
     index: bool = False,
-    **kwargs,
+    **kwargs: Any,
 ) -> None:
     """
     Load a pandas DataFrame into an Excel file.
@@ -92,7 +94,7 @@ def load_to_database(
     *,
     if_exists: Literal["fail", "replace", "append", "delete_rows"] = "append",
     index: bool = False,
-    **kwargs,
+    **kwargs: Any,
 ) -> None:
     """
     Load a pandas DataFrame into a relational database table.
@@ -178,7 +180,7 @@ def load_to_api(
     response.raise_for_status()
 
 
-LOAD_FNS: List[Callable[..., None]] = [
+LOAD_FUNCTIONS: List[Callable[..., None]] = [
     load_to_api,
     load_to_csv,
     load_to_database,
