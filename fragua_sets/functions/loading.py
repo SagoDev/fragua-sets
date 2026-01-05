@@ -11,7 +11,7 @@ import pandas as pd
 
 
 def load_to_csv(
-    df: pd.DataFrame,
+    input_data: pd.DataFrame,
     path: str,
     *,
     sep: str = ",",
@@ -42,7 +42,7 @@ def load_to_csv(
         Additional keyword arguments forwarded to pandas.to_csv.
     """
     # Write DataFrame to CSV file
-    df.to_csv(
+    input_data.to_csv(
         path,
         sep=sep,
         encoding=encoding,
@@ -52,7 +52,7 @@ def load_to_csv(
 
 
 def load_to_excel(
-    df: pd.DataFrame,
+    input_data: pd.DataFrame,
     path: str,
     *,
     sheet_name: str = "Sheet1",
@@ -79,7 +79,7 @@ def load_to_excel(
         Additional keyword arguments forwarded to pandas.to_excel.
     """
     # Write DataFrame to Excel file
-    df.to_excel(
+    input_data.to_excel(
         path,
         sheet_name=sheet_name,
         index=index,
@@ -88,7 +88,7 @@ def load_to_excel(
 
 
 def load_to_database(
-    df: pd.DataFrame,
+    input_data: pd.DataFrame,
     engine: Engine,
     table_name: str,
     *,
@@ -118,7 +118,7 @@ def load_to_database(
         Additional keyword arguments forwarded to pandas.to_sql.
     """
     # Persist DataFrame into database table
-    df.to_sql(
+    input_data.to_sql(
         name=table_name,
         con=engine,
         if_exists=if_exists,
@@ -128,7 +128,7 @@ def load_to_database(
 
 
 def load_to_api(
-    df: pd.DataFrame,
+    input_data: pd.DataFrame,
     url: str,
     *,
     method: str = "POST",
@@ -165,7 +165,7 @@ def load_to_api(
         JSON orientation used when serializing the DataFrame.
     """
     # Serialize DataFrame to JSON-compatible structure
-    payload = df.to_dict(orient=json_orient)
+    payload = input_data.to_dict(orient=json_orient)
 
     # Perform HTTP request
     response = requests.request(
