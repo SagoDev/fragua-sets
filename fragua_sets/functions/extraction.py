@@ -181,7 +181,7 @@ def extract_from_database(
     return df
 
 
-EXTRACTION_FNS: List[Callable[..., pd.DataFrame]] = [
+EXTRACTION_FUNCTIONS: List[Callable[..., pd.DataFrame]] = [
     extract_from_excel,
     extract_from_csv,
     extract_from_api,
