@@ -65,9 +65,7 @@ def create_functions_set(
     return fragua_set
 
 
-def create_sets_list(
-    definitions: Dict[str, Iterable[Callable[..., Any]]],
-) -> List[FraguaSet]:
+def create_sets_list() -> List[FraguaSet]:
     """
     Create multiple FraguaSets from a dictionary definition.
 
@@ -92,7 +90,7 @@ def create_sets_list(
     """
     sets: List[FraguaSet] = []
 
-    for set_name, functions in definitions.items():
+    for set_name, functions in FUNCTION_LISTS.items():
         # Create a FraguaSet using the single-set factory
         fragua_set = create_functions_set(
             name=set_name,
@@ -138,4 +136,4 @@ def add_sets_to_registry(
             )
 
 
-SETS_LIST = create_sets_list(FUNCTION_LISTS)
+SETS_LIST = create_sets_list()
