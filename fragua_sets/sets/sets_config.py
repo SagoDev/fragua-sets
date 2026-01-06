@@ -46,6 +46,8 @@ def create_set(
     fragua_set = FraguaSet(name=name)
 
     for item in items:
+        item_name: Optional[str] = None
+
         # Case 1: Pipeline
         if isinstance(item, FraguaPipeline):
             item_name = item.name
@@ -63,8 +65,8 @@ def create_set(
 
         # Case 2: Callable
         if callable(item):
-            item_name: Optional[str] = getattr(item, "__name__", None)
-            # Reject anonymous or invalid callables (e.g. lambdas)
+            item_name = getattr(item, "__name__", None)
+
             if not item_name:
                 raise ValueError(f"Callable has no valid __name__: {item!r}")
 
