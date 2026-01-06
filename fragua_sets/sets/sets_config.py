@@ -1,6 +1,6 @@
 """Configuration for Sets."""
 
-from typing import Any, Callable, Dict, Iterable, List, Union
+from typing import Any, Callable, Dict, Iterable, List, Optional, Union
 
 from fragua import FraguaRegistry, FraguaSet, FraguaPipeline
 
@@ -63,8 +63,7 @@ def create_set(
 
         # Case 2: Callable
         if callable(item):
-            item_name = getattr(item, "__name__", None)
-
+            item_name: Optional[str] = getattr(item, "__name__", None)
             # Reject anonymous or invalid callables (e.g. lambdas)
             if not item_name:
                 raise ValueError(f"Callable has no valid __name__: {item!r}")
