@@ -7,13 +7,11 @@ from fragua import FraguaRegistry, FraguaSet, FraguaPipeline
 from fragua_sets.functions.extraction import EXTRACTION_FUNCTIONS
 from fragua_sets.functions.loading import LOADING_FUNCTIONS
 from fragua_sets.functions.utility import UTILITY_FUNCTIONS
-from fragua_sets.pipelines.pipelines_config import PIPELINES_FUNCTIONS
 
 FUNCTION_LISTS: Dict[str, Any] = {
     "extraction": EXTRACTION_FUNCTIONS,
     "loading": LOADING_FUNCTIONS,
     "utility": UTILITY_FUNCTIONS,
-    "pipelines": PIPELINES_FUNCTIONS,
 }
 
 
