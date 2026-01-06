@@ -1,66 +1,87 @@
 """Configuration for Sets."""
 
-from typing import Any, Callable, Dict, Iterable, List
+from typing import Any, Callable, Dict, Iterable, List, Optional, Union
 
-from fragua import FraguaRegistry, FraguaSet
+from fragua import FraguaRegistry, FraguaSet, FraguaPipeline
 
 from fragua_sets.functions.extraction import EXTRACTION_FUNCTIONS
 from fragua_sets.functions.loading import LOADING_FUNCTIONS
 from fragua_sets.functions.utility import UTILITY_FUNCTIONS
 
-FUNCTION_LISTS: Dict[str, Iterable[Callable[..., Any]]] = {
+FUNCTION_LISTS: Dict[str, Any] = {
     "extraction": EXTRACTION_FUNCTIONS,
     "loading": LOADING_FUNCTIONS,
     "utility": UTILITY_FUNCTIONS,
 }
 
 
-def create_functions_set(
+def create_set(
     name: str,
-    functions: Iterable[Callable[..., Any]],
+    items: Iterable[Union[Callable[..., Any], FraguaPipeline]],
 ) -> FraguaSet:
     """
-    Create a FraguaSet from a collection of callables.
+    Create a FraguaSet from a collection of callables and/or pipelines.
 
-    Each callable is registered in the set using its function name.
-    The function name must be unique within the set.
+    Functions are registered using their __name__.
+    Pipelines are registered using their pipeline name.
 
     Parameters
     ----------
     name:
         Name of the FraguaSet.
-    functions:
-        Iterable of callable objects to register.
+    items:
+        Iterable of callables or FraguaPipeline instances.
 
     Returns
     -------
     FraguaSet
-        A FraguaSet containing the provided functions.
+        A FraguaSet containing the registered items.
 
     Raises
     ------
     ValueError
-        If a callable does not have a valid name or if a name collision occurs.
+        If an item has no valid name, is not supported,
+        or a name collision occurs.
     """
     fragua_set = FraguaSet(name=name)
 
-    for func in functions:
-        # Ensure the object is callable
-        if not callable(func):
-            raise ValueError(f"Object is not callable: {func!r}")
+    for item in items:
+        item_name: Optional[str] = None
 
-        func_name = getattr(func, "__name__", None)
+        # Case 1: Pipeline
+        if isinstance(item, FraguaPipeline):
+            item_name = item.name
 
-        # Reject callables without a proper name (e.g. lambdas)
-        if not func_name:
-            raise ValueError(f"Callable has no valid __name__: {func!r}")
+            if not item_name:
+                raise ValueError(f"Pipeline has no valid name: {item!r}")
 
-        # Register function, fail explicitly on collision
-        registered = fragua_set.register(func_name, func)
-        if not registered:
-            raise ValueError(
-                f"Duplicate function name '{func_name}' in FraguaSet '{name}'"
-            )
+            registered = fragua_set.register(item_name, item)
+            if not registered:
+                raise ValueError(
+                    f"Duplicate pipeline name '{item_name}' in FraguaSet '{name}'"
+                )
+
+            continue
+
+        # Case 2: Callable
+        if callable(item):
+            item_name = getattr(item, "__name__", None)
+
+            if not item_name:
+                raise ValueError(f"Callable has no valid __name__: {item!r}")
+
+            registered = fragua_set.register(item_name, item)
+            if not registered:
+                raise ValueError(
+                    f"Duplicate function name '{item_name}' in FraguaSet '{name}'"
+                )
+
+            continue
+
+        # Unsupported type
+        raise ValueError(
+            f"Unsupported item type '{type(item).__name__}' in FraguaSet '{name}'"
+        )
 
     return fragua_set
 
@@ -90,11 +111,11 @@ def create_sets_list() -> List[FraguaSet]:
     """
     sets: List[FraguaSet] = []
 
-    for set_name, functions in FUNCTION_LISTS.items():
+    for set_name, items in FUNCTION_LISTS.items():
         # Create a FraguaSet using the single-set factory
-        fragua_set = create_functions_set(
+        fragua_set = create_set(
             name=set_name,
-            functions=functions,
+            items=items,
         )
         sets.append(fragua_set)
 
@@ -104,6 +125,7 @@ def create_sets_list() -> List[FraguaSet]:
 def add_sets_to_registry(
     sets: Iterable[FraguaSet],
     registry: FraguaRegistry,
+    replace_sets: bool = False,
 ) -> None:
     """
     Register multiple FraguaSet instances into a FraguaRegistry.
@@ -127,6 +149,10 @@ def add_sets_to_registry(
     for fragua_set in sets:
         # Attempt to register the set using its name
         registered = registry.add_set(fragua_set)
+
+        if replace_sets and not registered:
+            registry.replace_set(fragua_set)
+            return
 
         # Fail explicitly on name collision
         if not registered:

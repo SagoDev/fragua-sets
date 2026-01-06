@@ -7,53 +7,32 @@ from sqlalchemy.engine import Engine
 
 import pandas as pd
 
+from fragua_sets.utils.helpers.helpers import get_project_root
+
 # pylint: disable=too-many-arguments
 
 
 def load_to_csv(
-    df: pd.DataFrame,
-    path: str,
-    *,
+    input_data: pd.DataFrame,
+    filename: str,
     sep: str = ",",
-    encoding: Optional[str] = None,
-    index: bool = False,
-    **kwargs: Any,
+    subdir: str = "pipeline_output",
 ) -> None:
     """
-    Load a pandas DataFrame into a CSV file.
-
-    This function persists the given DataFrame to disk using
-    pandas.to_csv and is intended to be used as a load primitive
-    in ETL pipelines.
-
-    Parameters
-    ----------
-    df:
-        DataFrame to be persisted.
-    path:
-        Destination file path.
-    sep:
-        Column separator.
-    encoding:
-        Optional file encoding.
-    index:
-        Whether to write row indices.
-    **kwargs:
-        Additional keyword arguments forwarded to pandas.to_csv.
+    Save a DataFrame to a CSV file in the project root.
     """
-    # Write DataFrame to CSV file
-    df.to_csv(
-        path,
-        sep=sep,
-        encoding=encoding,
-        index=index,
-        **kwargs,
-    )
+    base_path = get_project_root()
+    output_dir = base_path / subdir
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    file_path = output_dir / filename
+    input_data.to_csv(file_path, sep=sep, index=False)
 
 
 def load_to_excel(
-    df: pd.DataFrame,
-    path: str,
+    input_data: pd.DataFrame,
+    filename: str,
+    subdir: str = "pipeline_output",
     *,
     sheet_name: str = "Sheet1",
     index: bool = False,
@@ -69,8 +48,10 @@ def load_to_excel(
     ----------
     df:
         DataFrame to be persisted.
-    path:
-        Destination file path.
+    filename:
+        Destination filename.
+    subdir:
+        Subdirectory within project root.
     sheet_name:
         Name of the Excel sheet.
     index:
@@ -78,9 +59,13 @@ def load_to_excel(
     **kwargs:
         Additional keyword arguments forwarded to pandas.to_excel.
     """
-    # Write DataFrame to Excel file
-    df.to_excel(
-        path,
+    base_path = get_project_root()
+    output_dir = base_path / subdir
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    file_path = output_dir / filename
+    input_data.to_excel(
+        file_path,
         sheet_name=sheet_name,
         index=index,
         **kwargs,
@@ -88,7 +73,7 @@ def load_to_excel(
 
 
 def load_to_database(
-    df: pd.DataFrame,
+    input_data: pd.DataFrame,
     engine: Engine,
     table_name: str,
     *,
@@ -118,7 +103,7 @@ def load_to_database(
         Additional keyword arguments forwarded to pandas.to_sql.
     """
     # Persist DataFrame into database table
-    df.to_sql(
+    input_data.to_sql(
         name=table_name,
         con=engine,
         if_exists=if_exists,
@@ -128,7 +113,7 @@ def load_to_database(
 
 
 def load_to_api(
-    df: pd.DataFrame,
+    input_data: pd.DataFrame,
     url: str,
     *,
     method: str = "POST",
@@ -165,7 +150,7 @@ def load_to_api(
         JSON orientation used when serializing the DataFrame.
     """
     # Serialize DataFrame to JSON-compatible structure
-    payload = df.to_dict(orient=json_orient)
+    payload = input_data.to_dict(orient=json_orient)
 
     # Perform HTTP request
     response = requests.request(

@@ -8,5 +8,5 @@ class Sets(str, Enum):
 
     UTILITY = "utility"
     EXTRACTION = "extraction"
-    LOAD = "load"
+    LOADING = "loading"
     PIPELINES = "pipelines"
