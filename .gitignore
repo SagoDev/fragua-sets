@@ -1,7 +1,6 @@
 #test 
 tests/
 test_files/
-main.py
 
 # Archivos de compilación y empaquetado
 build/
