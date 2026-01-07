@@ -16,6 +16,18 @@ class ExtractionFunction(str, Enum):
 
 
 # ----------------------------
+# TRANSFORMATION FUNCTIONS
+# ----------------------------
+class TransfomationFunction(str, Enum):
+    """Transformation functions."""
+
+    STRIP_WHITESPACE = "strip_whitespace"
+    FILL_MISSING_VALUES = "fill_missing_values"
+    CREATE_DERIVED_COLUMN = "create_derived_column"
+    CAPITALIZE_STRINGS_COLUMNS = "capitalize_string_columns"
+
+
+# ----------------------------
 # LOAD FUNCTIONS
 # ----------------------------
 class LoadFunction(str, Enum):
