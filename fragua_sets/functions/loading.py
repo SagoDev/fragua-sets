@@ -13,7 +13,7 @@ from fragua_sets.utils.helpers.helpers import get_project_root
 
 
 def load_to_csv(
-    input_data: pd.DataFrame,
+    df: pd.DataFrame,
     filename: str,
     sep: str = ",",
     subdir: str = "pipeline_output",
@@ -26,11 +26,11 @@ def load_to_csv(
     output_dir.mkdir(parents=True, exist_ok=True)
 
     file_path = output_dir / filename
-    input_data.to_csv(file_path, sep=sep, index=False)
+    df.to_csv(file_path, sep=sep, index=False)
 
 
 def load_to_excel(
-    input_data: pd.DataFrame,
+    df: pd.DataFrame,
     filename: str,
     subdir: str = "pipeline_output",
     *,
@@ -64,7 +64,7 @@ def load_to_excel(
     output_dir.mkdir(parents=True, exist_ok=True)
 
     file_path = output_dir / filename
-    input_data.to_excel(
+    df.to_excel(
         file_path,
         sheet_name=sheet_name,
         index=index,
@@ -73,7 +73,7 @@ def load_to_excel(
 
 
 def load_to_database(
-    input_data: pd.DataFrame,
+    df: pd.DataFrame,
     engine: Engine,
     table_name: str,
     *,
@@ -103,7 +103,7 @@ def load_to_database(
         Additional keyword arguments forwarded to pandas.to_sql.
     """
     # Persist DataFrame into database table
-    input_data.to_sql(
+    df.to_sql(
         name=table_name,
         con=engine,
         if_exists=if_exists,
@@ -113,7 +113,7 @@ def load_to_database(
 
 
 def load_to_api(
-    input_data: pd.DataFrame,
+    df: pd.DataFrame,
     url: str,
     *,
     method: str = "POST",
@@ -150,7 +150,7 @@ def load_to_api(
         JSON orientation used when serializing the DataFrame.
     """
     # Serialize DataFrame to JSON-compatible structure
-    payload = input_data.to_dict(orient=json_orient)
+    payload = df.to_dict(orient=json_orient)
 
     # Perform HTTP request
     response = requests.request(
