@@ -1,20 +1,21 @@
 # Fragua Sets
 
-**Fragua Sets** is Python script that complement Fragua framework providing a few **pre-configured FraguaSets**
-for use within a **Fragua environment**, enabling rapid development of ETL processes.
+**Fragua Sets** is a Python package that complements the **Fragua framework** by providing a set of **pre-configured FraguaSets**.  
+These sets can be used directly within a **Fragua environment**, enabling rapid development and testing of ETL workflows.
 
-Fragua is a Python framework designed to orchestrate **ETL workflows** through a
-configurable environment, leveraging **FraguaAgents** that execute **pipeline
-functions** and **functions** to process data efficiently. This script
-offers ready-to-use FraguaSets so you can start working in a Fragua environment
-without manual setup.
+**Fragua** itself is a Python framework designed to orchestrate **ETL pipelines** using **FraguaAgents**, which execute **pipeline steps** and **functions** to efficiently process data.  
+With **Fragua Sets**, you get ready-to-use FraguaSets, allowing you to start working in a Fragua environment without manual configuration.
+
+---
 
 ## Features
 
 * Pre-configured **FraguaSets** ready for ETL workflows.
-* Includes simple **functions** for **extraction** and **loading** for common data operations.
-* Designed for direct use with **FraguaAgents** within a Fragua environment.
-* Minimal setup required: plug and play in your Fragua environment.
+* Includes basic **functions** for **extraction**, **transformation**, and **loading** for common data operations.
+* Fully compatible with **FraguaAgents** for immediate execution.
+* Minimal setup required – plug and play in your Fragua environment.
+
+---
 
 ## Installation
 
