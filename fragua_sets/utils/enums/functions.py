@@ -18,13 +18,27 @@ class ExtractionFunction(str, Enum):
 # ----------------------------
 # TRANSFORMATION FUNCTIONS
 # ----------------------------
+
+
 class TransfomationFunction(str, Enum):
     """Transformation functions."""
 
     STRIP_WHITESPACE = "strip_whitespace"
     FILL_MISSING_VALUES = "fill_missing_values"
     CREATE_DERIVED_COLUMN = "create_derived_column"
-    CAPITALIZE_STRINGS_COLUMNS = "capitalize_string_columns"
+    CAPITALIZE_STRING_COLUMNS = "capitalize_string_columns"
+
+    NORMALIZE_COLUMN_NAMES = "normalize_column_names"
+    DROP_NULLS_IN_COLUMNS = "drop_nulls_in_columns"
+    PARSE_DATETIME_COLUMN = "parse_datetime_column"
+    CREATE_SUM_COLUMN = "create_sum_column"
+    FILTER_BY_MIN_VALUE = "filter_by_min_value"
+
+    STRIP_STRING_COLUMNS = "strip_string_columns"
+    FILL_NULLS_WITH_VALUE = "fill_nulls_with_value"
+    RENAME_COLUMNS = "rename_columns"
+    CAST_COLUMN_TO_NUMERIC = "cast_column_to_numeric"
+    SORT_BY_COLUMN = "sort_by_column"
 
 
 # ----------------------------
