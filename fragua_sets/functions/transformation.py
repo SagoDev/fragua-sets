@@ -52,13 +52,11 @@ def fill_missing_values(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def create_derived_column(
+def add_total_price_derived_column(
     df: pd.DataFrame,
     *,
     col_a: str,
     col_b: str,
-    new_col: str,
-    operation: Callable[[pd.Series, pd.Series], pd.Series],
 ) -> pd.DataFrame:
     """
     Create a derived column from two existing columns.
@@ -93,7 +91,7 @@ def create_derived_column(
         raise KeyError(f"Column '{col_b}' does not exist in DataFrame")
 
     df = df.copy()
-    df[new_col] = operation(df[col_a], df[col_b])
+    df["total_price"] = df[col_a] * df[col_b]
 
     return df
 
@@ -129,6 +127,6 @@ def capitalize_string_columns(df: pd.DataFrame) -> pd.DataFrame:
 TRANSFORMATION_FUNCTIONS: List[Callable[..., pd.DataFrame]] = [
     strip_whitespace,
     fill_missing_values,
-    create_derived_column,
+    add_total_price_derived_column,
     capitalize_string_columns,
 ]
