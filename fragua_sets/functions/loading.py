@@ -7,7 +7,7 @@ from sqlalchemy.engine import Engine
 
 import pandas as pd
 
-from fragua_sets.utils.helpers.helpers import get_project_root
+from fragua.utils.helpers.get_project_root import get_project_root
 
 # pylint: disable=too-many-arguments
 
